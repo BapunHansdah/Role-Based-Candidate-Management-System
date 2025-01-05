@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://test.unifillai.com",
+        target: "https://role-based-candidate-management-system.onrender.com",
         changeOrigin: true,
       },
     },
