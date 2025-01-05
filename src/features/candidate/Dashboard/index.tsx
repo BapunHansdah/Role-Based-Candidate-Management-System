@@ -99,7 +99,7 @@ const UserDashboardComp = ({
       const reader = new FileReader();
       reader.onloadend = () => {
         setEditedProfile({ ...editedProfile, resume: response});
-        setProfile({ ...profile, resume: reader.result as string });
+        setProfile({ ...profile, resume: response});
       };
       reader.readAsDataURL(file);
     }
