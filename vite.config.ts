@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://test.unifillai.com",
+        target: "https://test.unifillai.com",
         changeOrigin: true,
       },
     },
