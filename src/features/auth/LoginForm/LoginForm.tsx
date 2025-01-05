@@ -18,8 +18,8 @@ export const LoginForm = ({
   onSubmit: (credentials: Credentials) => Promise<void>;
 }) => {
   const [formData, setFormData] = useState<Credentials>({
-    email: "",
-    password: "",
+    email: "test@gmail.com",
+    password: "1234567890",
   });
 
   const [errors, setErrors] = useState({
