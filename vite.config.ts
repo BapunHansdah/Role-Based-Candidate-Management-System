@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://ec2-54-89-54-70.compute-1.amazonaws.com",
+        target: "http://test.unifillai.com",
         changeOrigin: true,
       },
     },
