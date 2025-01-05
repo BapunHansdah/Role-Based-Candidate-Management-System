@@ -131,7 +131,7 @@ const UserDashboardComp = ({
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Profile Card */}
-          <ProfileCard profile={profile} />
+          <ProfileCard profile={profile} setIsImageDialogOpen={setIsImageDialogOpen}/>
           <div className="md:col-span-2 grid gap-5">
             {/* Profile Details Card */}
             <ProfileDetailCard
