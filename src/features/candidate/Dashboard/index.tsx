@@ -26,7 +26,7 @@ const UserDashboardComp = ({
   updateProfile: (user: User) => Promise<void>;
   getProfile: () => Promise<User>;
   updateProfileImage: (file: FormData) => Promise<void>;
-  updateResume: (file: FormData) => Promise<void>;
+  updateResume: (file: FormData) => Promise<string>;
   updatePassword: (
     oldPassword: string,
     password: string,
@@ -94,11 +94,11 @@ const UserDashboardComp = ({
     if (file) {
       const formData = new FormData();
       formData.append("resume", file);
-      await updateResume(formData);
+      const response  = await updateResume(formData);
       setUploadingResume(false);
       const reader = new FileReader();
       reader.onloadend = () => {
-        setEditedProfile({ ...editedProfile, resume: reader.result as string });
+        setEditedProfile({ ...editedProfile, resume: response});
         setProfile({ ...profile, resume: reader.result as string });
       };
       reader.readAsDataURL(file);

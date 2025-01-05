@@ -24,7 +24,7 @@ class UserService {
 
   async updateResume(file: FormData) {
     const response = await api.put("/candidate/resume", file);
-    return response.data;
+    return response.data.url;
   }
 
 }
