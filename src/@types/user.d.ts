@@ -11,7 +11,7 @@ export interface IUserContext {
   getProfile: () => Promise<User>;
   updateProfile: (user: User) => Promise<void>;
   updateProfileImage: (file: FormData) => Promise<void>;
-  updateResume: (file: FormData) => Promise<void>;
+  updateResume: (file: FormData) => Promise<string>;
   updatePassword: (
     oldPassword: string,
     password: string,
