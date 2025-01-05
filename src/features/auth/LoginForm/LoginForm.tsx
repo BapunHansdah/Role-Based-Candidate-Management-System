@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 
-import { Card, CardHeader, CardContent, CardFooter } from "../../../components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardFooter,
+} from "../../../components/ui/card";
 import { Mail, Lock, ArrowRight, Users, ShieldCheck } from "lucide-react";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
@@ -18,8 +23,8 @@ export const LoginForm = ({
   onSubmit: (credentials: Credentials) => Promise<void>;
 }) => {
   const [formData, setFormData] = useState<Credentials>({
-    email: "test@gmail.com",
-    password: "1234567890",
+    email: isAdmin ? "test@gmail.com" : "test5@gmail.com",
+    password: isAdmin ? "1234567890" : "1234567890",
   });
 
   const [errors, setErrors] = useState({
@@ -32,13 +37,13 @@ export const LoginForm = ({
       email: "",
       password: "",
     };
-    
+
     if (!formData.email) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Please enter a valid email";
     }
-    
+
     if (!formData.password) {
       newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
@@ -89,7 +94,9 @@ export const LoginForm = ({
                     type="email"
                     placeholder="Email address"
                     className={`pl-10 ${
-                      errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-300'
+                      errors.email
+                        ? "border-red-500 focus:ring-red-500"
+                        : "border-gray-300"
                     }`}
                     value={formData.email}
                     onChange={(e) =>
@@ -107,7 +114,9 @@ export const LoginForm = ({
                     type="password"
                     placeholder="Password"
                     className={`pl-10 ${
-                      errors.password ? 'border-red-500 focus:ring-red-500' : 'border-gray-300'
+                      errors.password
+                        ? "border-red-500 focus:ring-red-500"
+                        : "border-gray-300"
                     }`}
                     value={formData.password}
                     onChange={(e) =>
@@ -115,7 +124,9 @@ export const LoginForm = ({
                     }
                   />
                   {errors.password && (
-                    <p className="mt-1 text-sm text-red-500">{errors.password}</p>
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.password}
+                    </p>
                   )}
                 </div>
               </div>
@@ -128,13 +139,19 @@ export const LoginForm = ({
                     type="checkbox"
                     className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                   />
-                  <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+                  <label
+                    htmlFor="remember-me"
+                    className="ml-2 block text-sm text-gray-900"
+                  >
                     Remember me
                   </label>
                 </div>
 
                 <div className="text-sm">
-                  <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                  <a
+                    href="#"
+                    className="font-medium text-blue-600 hover:text-blue-500"
+                  >
                     Forgot password?
                   </a>
                 </div>
@@ -152,9 +169,22 @@ export const LoginForm = ({
 
           <CardFooter className="text-center text-sm text-gray-600">
             {isAdmin ? (
-              <p>Need a user account? <a href="/login" className="text-blue-600 hover:text-blue-500">Switch to user login</a></p>
+              <p>
+                Need a user account?{" "}
+                <a href="/login" className="text-blue-600 hover:text-blue-500">
+                  Switch to user login
+                </a>
+              </p>
             ) : (
-              <p>Are you an admin? <a href="/admin/login  " className="text-blue-600 hover:text-blue-500">Switch to admin login</a></p>
+              <p>
+                Are you an admin?{" "}
+                <a
+                  href="/admin/login  "
+                  className="text-blue-600 hover:text-blue-500"
+                >
+                  Switch to admin login
+                </a>
+              </p>
             )}
           </CardFooter>
         </Card>
