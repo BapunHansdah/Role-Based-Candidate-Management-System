@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:5000",
+        target: "http://ec2-54-89-54-70.compute-1.amazonaws.com",
       },
     },
   },
